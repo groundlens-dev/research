@@ -1,0 +1,92 @@
+{
+ "translator": "v2",
+ "metrics": {
+  "folio": {
+   "n": 204,
+   "accuracy": 0.7156862745098039,
+   "false_PASS": 2,
+   "PASS_correct": 46,
+   "gold_True": 72,
+   "FAIL_correct": 37,
+   "false_FAIL": 4,
+   "no_decision(Error)": 5,
+   "seconds": 79
+  },
+  "dgt": {
+   "sentences": 300,
+   "parse_rate": 0.9616666666666667,
+   "vs_english": {
+    "same_shape": 0.37,
+    "same_negations": 0.843,
+    "same_numbers": 0.738,
+    "same_quantifiers": 0.732,
+    "equivalent_same_names": 0.075,
+    "parse_fail": 0.038
+   },
+   "per_language": {
+    "es": {
+     "same_shape": 0.389,
+     "same_negations": 0.846,
+     "same_numbers": 0.771,
+     "equivalent_same_names": 0.092
+    },
+    "fr": {
+     "same_shape": 0.386,
+     "same_negations": 0.84,
+     "same_numbers": 0.741,
+     "equivalent_same_names": 0.072
+    },
+    "de": {
+     "same_shape": 0.365,
+     "same_negations": 0.826,
+     "same_numbers": 0.717,
+     "equivalent_same_names": 0.061
+    },
+    "nl": {
+     "same_shape": 0.348,
+     "same_negations": 0.846,
+     "same_numbers": 0.724,
+     "equivalent_same_names": 0.065
+    },
+    "it": {
+     "same_shape": 0.362,
+     "same_negations": 0.857,
+     "same_numbers": 0.737,
+     "equivalent_same_names": 0.085
+    }
+   },
+   "seconds": 115,
+   "polarity_vs_text": {
+    "en": 0.823,
+    "es": 0.822,
+    "fr": 0.802,
+    "de": 0.825,
+    "nl": 0.798,
+    "it": 0.807
+   },
+   "uses_quantifier": {
+    "en": 0.976,
+    "es": 0.997,
+    "fr": 0.993,
+    "de": 0.993,
+    "nl": 0.993,
+    "it": 0.997
+   }
+  },
+  "wikidata": {
+   "questions": 300,
+   "yes_share": 0.5,
+   "accuracy": 0.926,
+   "per_language": {
+    "en": 0.947,
+    "es": 0.917,
+    "fr": 0.927,
+    "de": 0.92,
+    "nl": 0.93,
+    "it": 0.913
+   },
+   "no_answer": 0,
+   "seconds": 16
+  }
+ }
+}

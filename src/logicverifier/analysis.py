@@ -14,7 +14,6 @@ with a non empty reading set, some reading is equivalent to the expert formula.
 from __future__ import annotations
 
 import json
-import math
 import random
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
@@ -42,6 +41,10 @@ __all__ = [
     "clopper_pearson_upper",
     "estimate_bound",
     "validate_estimate",
+    "outer_bound",
+    "labels_of",
+    "pooled",
+    "plot_main_figure",
 ]
 
 PASS, FAIL, REVIEW = "True", "False", "Uncertain"
@@ -90,13 +93,18 @@ def load_judge(path: str | Path) -> dict[str, dict[str, str]]:
 # ----------------------------------------------------------------------------- decision rules
 
 def _most_frequent(readings: Sequence[str]) -> list[str]:
-    """One reading of the largest class of equivalent readings. Readings are compared in
-    order of generation, each joins the first class whose representative is equivalent
-    within three seconds, and ties go to the earliest class."""
+    """One reading of the largest class of equivalent formulas (selection).
+
+    The distinct valid readings are compared in order of generation, each joins the first
+    class whose representative Z3 finds equivalent within three seconds, and the first
+    reading of the largest class is kept. A class is as large as the number of distinct
+    formulas it holds, and ties go to the earliest class, the one of the greedy reading
+    when it is valid.
+    """
     classes: list[list[str]] = []
-    for reading in readings:
+    for reading in dict.fromkeys(readings):
         for members in classes:
-            if reading == members[0] or equivalent(members[0], reading, 3000) is True:
+            if equivalent(members[0], reading, 3000) is True:
                 members.append(reading)
                 break
         else:
@@ -285,9 +293,60 @@ def outer_bound(outcomes: Iterable[Outcome]) -> float:
     return sum(not o.retained for o in outcomes) / len(outcomes)
 
 
-def as_percent(x: float, digits: int = 1) -> str:
-    return f"{100 * x:.{digits}f}%"
+# ----------------------------------------------------------------------------- pooling and figure
+
+def labels_of(sets: dict[str, dict[str, dict]]) -> dict[tuple[str, str], str]:
+    """Labels of every story, keyed by ``(set, story id)``."""
+    return {(name, i): story["label"] for name, stories in sets.items() for i, story in stories.items()}
 
 
-def _round_half_up(x: float, digits: int) -> float:
-    return math.floor(x * 10**digits + 0.5) / 10**digits
+def pooled(by_set: dict[str, dict], keys: Iterable[tuple[str, str]] | None = None) -> dict[tuple[str, str], object]:
+    """Join per-set results ``{set: {story id: x}}`` into ``{(set, story id): x}``,
+    optionally restricted to some keys."""
+    keys = None if keys is None else set(keys)
+    return {(name, i): x for name, items in by_set.items() for i, x in items.items() if keys is None or (name, i) in keys}
+
+
+def plot_main_figure(curves: dict[str, list[Summary]], judges_all: dict[str, Summary],
+                     curves_shared: dict[str, list[Summary]], judges_shared: dict[str, Summary],
+                     splits: list[tuple[float, float]], path: str | Path | None = None):
+    """Figure 1 of the paper. ``curves`` maps a rule name to its summaries with one to
+    seven readings; the judges are single points."""
+    import matplotlib.pyplot as plt
+
+    colours = {"Most frequent": "#eb6834", "Every reading": "#2a78d6", "Every reading, with edits": "#1baf7a"}
+    markers = {"Most frequent": "s", "Every reading": "o", "Every reading, with edits": "^"}
+    judge_markers = {"gpt-6.1-sol": "D", "Claude Opus 5.5": "P"}
+    grey = "#52514e"
+    plt.rcParams.update({"font.family": "serif", "font.size": 9, "axes.labelsize": 9, "legend.fontsize": 7,
+                         "xtick.labelsize": 8, "ytick.labelsize": 8, "pdf.fonttype": 42})
+    fig, axes = plt.subplots(1, 4, figsize=(13, 2.9), gridspec_kw={"wspace": 0.35})
+
+    for name, summaries in curves.items():
+        style = dict(color=colours[name], marker=markers[name], ms=4, lw=1.3, mec="white", mew=0.5, label=name)
+        axes[0].plot([s.mean_size for s in summaries], [100 * s.retained_rate for s in summaries], **style)
+        axes[1].plot([s.coverage for s in summaries], [100 * s.false_approval_rate for s in summaries], **style)
+    for name, summaries in curves_shared.items():
+        axes[2].plot([s.coverage for s in summaries], [100 * s.false_approval_rate for s in summaries],
+                     color=colours[name], marker=markers[name], ms=4, lw=1.3, mec="white", mew=0.5, label=name)
+    for axis, judges in ((axes[1], judges_all), (axes[2], judges_shared)):
+        for name, s in judges.items():
+            axis.plot([s.coverage], [100 * s.false_approval_rate], marker=judge_markers[name], ms=5.5, color=grey,
+                      ls="none", label=f"{name} as judge")
+    bounds, observed = [100 * b for b, _ in splits], [100 * o for _, o in splits]
+    edges = [x / 4 for x in range(int(4 * max(bounds + observed)) + 2)]
+    axes[3].hist(observed, bins=edges, color=colours["Every reading"], alpha=0.5, label="Observed, other half")
+    axes[3].hist(bounds, bins=edges, color=colours["Most frequent"], alpha=0.5, label="Bound, estimation half")
+
+    axes[0].set(xlabel="Readings kept per sentence", ylabel="Stories retaining every\nfaithful reading (%)")
+    axes[1].set(xlabel="Coverage", ylabel="False approvals (%)")
+    axes[2].set(xlabel="Coverage, shared subset", ylabel="False approvals (%)")
+    axes[3].set(xlabel="Share of all cases (%)", ylabel="Random splits")
+    for axis, letter in zip(axes, "abcd"):
+        axis.set_title(f"({letter})", loc="left", fontsize=9)
+        axis.grid(True, color="#e6e6e3", lw=0.5)
+        axis.spines[["top", "right"]].set_visible(False)
+        axis.legend(frameon=False, loc="best")
+    if path is not None:
+        fig.savefig(path, bbox_inches="tight")
+    return fig
