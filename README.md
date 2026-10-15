@@ -1,5 +1,11 @@
 # LLM Verification with a Controllable Error Rate
 
+![An open 8B model that approves a claim only when all its readings agree makes fewer wrong approvals than a frontier judge](figures/summary.png)
+
+A claim is approved only when it follows from the document under every reading the model proposes. Asking for more
+readings to agree cuts wrong approvals from 28 to 6 out of 630, and sends more cases to a person. Taking the majority
+reading does not cut them. 801 stories from FOLIO and two variants of it; the numbers come from `notebooks/06_results.ipynb`.
+
 Code and data for the paper *LLM Verification with a Controllable Error Rate* (Javier Marín, 2026).
 
 ## What the paper is about
