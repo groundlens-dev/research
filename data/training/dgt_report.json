@@ -1,0 +1,33 @@
+{
+ "candidates": 132229,
+ "conflicting_duplicates_dropped": {
+  "es": 14419,
+  "fr": 3508,
+  "de": 1080,
+  "nl": 611,
+  "it": 659
+ },
+ "simple_checks": {
+  "numbers": 44967,
+  "ok": 78430,
+  "length": 5013,
+  "fragment": 3819
+ },
+ "embedded": 9000,
+ "min_sim_threshold": 0.75,
+ "min_sim_quantiles": {
+  "p05": 0.763,
+  "p25": 0.849,
+  "p50": 0.89,
+  "p75": 0.92
+ },
+ "kept_after_embedding": 8649,
+ "old_test": {
+  "rows": 300,
+  "fail_simple_checks": 123,
+  "fail_embedding": 103,
+  "pass_both": 168
+ },
+ "test": 300,
+ "train": 1500
+}

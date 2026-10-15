@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=69"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,14 +8,27 @@ version = "1.0.0"
 description = "Code and data for the paper 'LLM Verification with a Controllable Error Rate'"
 readme = "README.md"
 license = "Apache-2.0"
+license-files = ["LICENSE"]
 authors = [{ name = "Javier Marín", email = "javier@jmarin.info" }]
 requires-python = ">=3.10"
-dependencies = ["z3-solver", "scipy", "matplotlib"]
+dependencies = ["z3-solver", "scipy", "matplotlib", "pandas"]
 
 [project.optional-dependencies]
 gpu = ["torch", "transformers", "peft", "bitsandbytes", "accelerate", "huggingface_hub", "mistral-common", "vllm", "sentence-transformers"]
 judges = ["anthropic", "openai"]
 vocabularies = ["rdflib"]
+notebooks = ["jupyterlab"]
+test = ["pytest"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.ruff]
+line-length = 125
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["B905"]
+# The sentence templates of synthetic.py are kept one per line.
+per-file-ignores = { "src/logicverifier/synthetic.py" = ["E501"] }

@@ -25,9 +25,21 @@ from pathlib import Path
 
 from .data import LANGUAGES, read_jsonl
 from .logic import decide, equivalent, signature, vocabulary
-from .prompts import (COMMON_SENSE, JUDGE_SYSTEM, SENTENCE_GRAMMAR, control_story_prompt, formula_lines,
-                      free_grammar, free_translator_prompt, judge_prompt, parse_judge, parse_translation,
-                      sentence_prompt, translator_grammar, translator_prompt)
+from .prompts import (
+    COMMON_SENSE,
+    JUDGE_SYSTEM,
+    SENTENCE_GRAMMAR,
+    control_story_prompt,
+    formula_lines,
+    free_grammar,
+    free_translator_prompt,
+    judge_prompt,
+    parse_judge,
+    parse_translation,
+    sentence_prompt,
+    translator_grammar,
+    translator_prompt,
+)
 
 __all__ = [
     "BASE_MODEL",
@@ -77,7 +89,10 @@ def train_adapter(base_dir: str | Path, train_path: str | Path, adapter_dir: str
 
     torch.manual_seed(seed)
     random.seed(seed)
-    tokenizer = AutoTokenizer.from_pretrained(str(base_dir))
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(str(base_dir))
+    except (ValueError, OSError):   # older transformers: Mistral's own tokenizer format
+        tokenizer = transformers.MistralCommonBackend.from_pretrained(str(base_dir))
     eos = tokenizer.eos_token_id
     data = []
     for row in read_jsonl(train_path):
@@ -93,8 +108,10 @@ def train_adapter(base_dir: str | Path, train_path: str | Path, adapter_dir: str
             model = getattr(transformers, name).from_pretrained(str(base_dir), dtype=torch.bfloat16, device_map={"": 0},
                                                                 quantization_config=quantization)
             break
-        except (ValueError, KeyError):
+        except Exception:  # the base model registers under one of the two classes, depending on the version
             continue
+    if model is None:
+        raise RuntimeError(f"could not load {base_dir}")
     model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
     targets = sorted({name for name, module in model.named_modules()
                       if name.split(".")[-1] in _LORA_TARGETS and not any(s in name for s in _NOT_TEXT)
@@ -152,8 +169,10 @@ def merge_adapter(base_dir: str | Path, adapter_dir: str | Path, merged_dir: str
             base = getattr(transformers, name).from_pretrained(str(base_dir), dtype=torch.bfloat16, device_map="cpu",
                                                                low_cpu_mem_usage=True)
             break
-        except (ValueError, KeyError):
+        except Exception:
             continue
+    if base is None:
+        raise RuntimeError(f"could not load {base_dir}")
     PeftModel.from_pretrained(base, str(adapter_dir)).merge_and_unload().save_pretrained(str(merged_dir),
                                                                                        safe_serialization=True)
     for path in Path(base_dir).iterdir():
@@ -169,8 +188,15 @@ def load_llm(model_dir: str | Path, gpu_memory: float = 0.88):
     """vLLM engine for a merged translator, text only, with engine seed 0."""
     from vllm import LLM
 
-    return LLM(model=str(model_dir), max_model_len=4096, gpu_memory_utilization=gpu_memory, trust_remote_code=True,
-               seed=0, limit_mm_per_prompt={"image": 0, "audio": 0, "video": 0})
+    error = None
+    for limits in ({"image": 0, "audio": 0, "video": 0}, {"image": 0}, None):
+        extra = {} if limits is None else {"limit_mm_per_prompt": limits}
+        try:
+            return LLM(model=str(model_dir), max_model_len=4096, gpu_memory_utilization=gpu_memory,
+                       trust_remote_code=True, seed=0, **extra)
+        except Exception as exc:  # vLLM versions differ in which modalities they accept for Mistral 3
+            error = exc
+    raise error
 
 
 def _constrained(temperature: float, max_tokens: int, grammar: str, seed: int | None = None, **extra):
@@ -260,7 +286,6 @@ def contract_pseudo_labels(llm, cases: Sequence[dict], k: int = 4, temperature: 
 
 # ----------------------------------------------------------------------------- controls outside FOLIO
 
-_NEGATION_WORD = re.compile(r"\b(not|no|never|neither|nor|without|cannot|none)\b", re.I)
 
 
 def _same_numbers(sig: dict | None) -> dict | None:
@@ -363,8 +388,8 @@ def _client(provider: str, model: str, reasoning_effort: str | None):
         client = anthropic.Anthropic()
 
         def call(system: str, prompt: str) -> str:
-            # The client library of October 2026 rejected an explicit temperature for this model,
-            # so the provider's default sampling is used.
+            # No temperature is sent: the client library used in October 2026 rejected it for this
+            # model, so the answers in data/judges/ were produced with the provider's default sampling.
             message = client.messages.create(model=model, max_tokens=1200, system=system,
                                              messages=[{"role": "user", "content": prompt}])
             return "".join(block.text for block in message.content if getattr(block, "type", "") == "text")
@@ -373,11 +398,19 @@ def _client(provider: str, model: str, reasoning_effort: str | None):
 
         client = openai.OpenAI()
 
+        use_effort = {"value": bool(reasoning_effort)}
+
         def call(system: str, prompt: str) -> str:
-            extra = {"reasoning_effort": reasoning_effort} if reasoning_effort else {}
-            response = client.chat.completions.create(
-                model=model, messages=[{"role": "system", "content": system}, {"role": "user", "content": prompt}],
-                max_completion_tokens=6000, **extra)
+            messages = [{"role": "system", "content": system}, {"role": "user", "content": prompt}]
+            extra = {"reasoning_effort": reasoning_effort} if use_effort["value"] else {}
+            try:
+                response = client.chat.completions.create(model=model, messages=messages,
+                                                          max_completion_tokens=6000, **extra)
+            except openai.BadRequestError as error:
+                if "reasoning_effort" not in str(error) or not use_effort["value"]:
+                    raise
+                use_effort["value"] = False   # a model without reasoning effort
+                response = client.chat.completions.create(model=model, messages=messages, max_completion_tokens=6000)
             return response.choices[0].message.content or ""
     return call
 
@@ -393,7 +426,12 @@ def ask_judge(provider: str, model: str, sets: dict[str, Sequence[dict]], answer
     answers_path = Path(answers_path)
     done = {}
     if answers_path.exists():
-        done = {(a["set"], a["id"]): a["text"] for a in read_jsonl(answers_path)}
+        for line in answers_path.read_text(encoding="utf-8").splitlines():
+            try:
+                answer = json.loads(line)
+            except json.JSONDecodeError:   # the last line of an interrupted run
+                continue
+            done[(answer["set"], answer["id"])] = answer["text"]
     call = _client(provider, model, reasoning_effort)
     lock = threading.Lock()
 

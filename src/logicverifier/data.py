@@ -27,8 +27,15 @@ from collections.abc import Iterable, Sequence
 from pathlib import Path
 
 from .logic import VARIABLES, FOLError, decide, parse, vocabulary
-from .prompts import (CONTROL_STORY_INSTRUCTION, FREE_INSTRUCTION, TRANSLATOR_INSTRUCTION, formula_lines,
-                      sentence_prompt, story_block, translator_prompt)
+from .prompts import (
+    CONTROL_STORY_INSTRUCTION,
+    FREE_INSTRUCTION,
+    TRANSLATOR_INSTRUCTION,
+    formula_lines,
+    sentence_prompt,
+    story_block,
+    translator_prompt,
+)
 
 __all__ = [
     "LANGUAGES",
@@ -107,6 +114,18 @@ def _text_form(constant: str) -> str:
     return " ".join(p[:1].upper() + p[1:] for p in parts)
 
 
+def _rename_in_text(text: str, mapping: dict) -> str:
+    for written, new in mapping.values():
+        text = re.sub(r"\b" + re.escape(written) + r"\b", new, text)
+    return text
+
+
+def _rename_in_formula(formula: str, mapping: dict) -> str:
+    for constant, (_, new) in mapping.items():
+        formula = re.sub(r"(?<![A-Za-z0-9_])" + re.escape(constant) + r"(?![A-Za-z0-9_])", new.lower(), formula)
+    return formula
+
+
 def _rename(premises, premise_formulas, conclusion, conclusion_formula, rng: random.Random):
     """Give a new name to every individual that is named in the text, in the text and
     in the formulas at the same time."""
@@ -122,19 +141,9 @@ def _rename(premises, premise_formulas, conclusion, conclusion_formula, rng: ran
             break
         mapping[constant] = (written, pool.pop())
 
-    def in_text(text):
-        for written, new in mapping.values():
-            text = re.sub(r"\b" + re.escape(written) + r"\b", new, text)
-        return text
-
-    def in_formula(formula):
-        for constant, (_, new) in mapping.items():
-            formula = re.sub(r"(?<![A-Za-z0-9_])" + re.escape(constant) + r"(?![A-Za-z0-9_])", new.lower(), formula)
-        return formula
-
     renamed = {constant: new for constant, (_, new) in mapping.items()}
-    return ([in_text(t) for t in premises], [in_formula(f) for f in premise_formulas],
-            in_text(conclusion), in_formula(conclusion_formula), renamed)
+    return ([_rename_in_text(t, mapping) for t in premises], [_rename_in_formula(f, mapping) for f in premise_formulas],
+            _rename_in_text(conclusion, mapping), _rename_in_formula(conclusion_formula, mapping), renamed)
 
 
 def _ascii(identifier: str) -> str:
@@ -288,7 +297,8 @@ def prepare_dgt(zip_dir: str | Path, n_test: int = 300, n_train: int = 1500, min
             with z.open(english_file) as a, z.open(other_file) as b:
                 for line_en, line_xx in zip(io.TextIOWrapper(a, encoding="utf-8"), io.TextIOWrapper(b, encoding="utf-8")):
                     english, other = line_en.strip(), line_xx.strip()
-                    if (candidates is None and _dgt_candidate(english)) or (candidates is not None and english in candidates):
+                    wanted = _dgt_candidate(english) if candidates is None else english in candidates
+                    if wanted:
                         if english in found and found[english] != other:
                             duplicates.add(english)
                         found.setdefault(english, other)
@@ -310,8 +320,8 @@ def prepare_dgt(zip_dir: str | Path, n_test: int = 300, n_train: int = 1500, min
         if reason is None:
             passed.append(row)
 
-    from sentence_transformers import SentenceTransformer
     import torch
+    from sentence_transformers import SentenceTransformer
     encoder = SentenceTransformer("sentence-transformers/LaBSE", device="cuda" if torch.cuda.is_available() else "cpu")
     pool = passed[:max_embedded]
     embeddings = encoder.encode([r[lang] for r in pool for lang in LANGUAGES], batch_size=256,
@@ -327,7 +337,8 @@ def prepare_dgt(zip_dir: str | Path, n_test: int = 300, n_train: int = 1500, min
 
 
 _NUMBER_TOKEN = re.compile(r"\d[\d\s.,]*\d|\d")
-_QUANTITY = re.compile(r"(\d[\d\s.,]*\d|\d)\s*(%|per\s*cent|EUR|euro|days?|weeks?|months?|years?|hours?|tonnes?|kg|mg|g\b|km|m2|litres?)", re.I)
+_QUANTITY = re.compile(r"(\d[\d\s.,]*\d|\d)\s*"
+                       r"(%|per\s*cent|EUR|euro|days?|weeks?|months?|years?|hours?|tonnes?|kg|mg|g\b|km|m2|litres?)", re.I)
 _NEGATION_WORD = re.compile(r"\b(not|no|never|neither|nor|without|cannot|none)\b", re.I)
 _WORD_NUMBERS = {w: str(i) for i, w in enumerate(
     "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
@@ -402,12 +413,13 @@ def common_sense_questions(n: int = 300, seed: int = 0) -> list[dict]:
 
     class_labels, members = {}, {}
     for cls in _WIKIDATA_CLASSES:
-        found = sparql(f"SELECT ?c {' '.join('?c_' + l for l in LANGUAGES)} WHERE {{ VALUES ?c {{ wd:{cls} }} {labels('c')} }}")
+        columns = " ".join("?c_" + lang for lang in LANGUAGES)
+        found = sparql(f"SELECT ?c {columns} WHERE {{ VALUES ?c {{ wd:{cls} }} {labels('c')} }}")
         if not found or not found["results"]["bindings"]:
             continue
         binding = found["results"]["bindings"][0]
         class_labels[cls] = {lang: binding["c_" + lang]["value"] for lang in LANGUAGES}
-        found = sparql(f"""SELECT DISTINCT ?item ?sl {' '.join('?item_' + l for l in LANGUAGES)} WHERE {{
+        found = sparql(f"""SELECT DISTINCT ?item ?sl {' '.join('?item_' + lang for lang in LANGUAGES)} WHERE {{
           {{ ?item wdt:P279 ?x . ?x wdt:P279* wd:{cls} . }} UNION {{ ?item wdt:P31 ?x . ?x wdt:P279* wd:{cls} . }}
           ?item wikibase:sitelinks ?sl . FILTER(?sl > 40)
           {labels('item')}
@@ -481,7 +493,8 @@ def _example(premises, premise_formulas, conclusion, conclusion_formula, source,
             "src": source}
 
 
-def build_v2_mixture(folio_train: Sequence[dict], dgt_train: Sequence[dict], dgt_formulas: Sequence[str]) -> tuple[list[dict], dict]:
+def build_v2_mixture(folio_train: Sequence[dict], dgt_train: Sequence[dict],
+                     dgt_formulas: Sequence[str]) -> tuple[list[dict], dict]:
     """Format training of translator v2.
 
     FOLIO training stories (their last premise plays the claim) are repeated three times,
@@ -593,21 +606,13 @@ def build_v3_mixture(synthetic: Sequence[dict], contract: Sequence[dict], folio_
             if pool and re.search(r"\b" + re.escape(written) + r"\b", " ".join(P + [C])):
                 mapping[constant] = (written, pool.pop())
 
-        def in_text(text):
-            for written, new in mapping.values():
-                text = re.sub(r"\b" + re.escape(written) + r"\b", new, text)
-            return text
-
-        def in_formula(formula):
-            for constant, (_, new) in mapping.items():
-                formula = re.sub(r"(?<![A-Za-z0-9_])" + re.escape(constant) + r"(?![A-Za-z0-9_])", new.lower(), formula)
-            return formula
-
         order = list(range(len(P)))
         rng.shuffle(order)
-        P2, F2 = [in_text(P[j]) for j in order], [in_formula(F[j]) for j in order]
-        if decide(F2, in_formula(G)) == label:
-            examples.append(_example(P2, F2, in_text(C), in_formula(G), "folio_aug"))
+        P2 = [_rename_in_text(P[j], mapping) for j in order]
+        F2 = [_rename_in_formula(F[j], mapping) for j in order]
+        G2 = _rename_in_formula(G, mapping)
+        if decide(F2, G2) == label:
+            examples.append(_example(P2, F2, _rename_in_text(C, mapping), G2, "folio_aug"))
             stats["folio_aug"] += 1
 
     dgt = [e for e in v2_mixture if e.get("src", "").startswith("dgt")]

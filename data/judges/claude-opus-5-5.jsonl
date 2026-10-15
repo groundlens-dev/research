@@ -1,0 +1,279 @@
+{"set": "folio_original", "id": "o0", "text": "**Uncertain**\n\nBoth possibilities are consistent with the premises.\n\n- **If Bonnie performs often:** by premise 1 she is engaged with school events. By premise 6 she is then also a student who attends the school. Nothing forces her to be inactive or to chaperone, so there is no contradiction.\n- **If Bonnie does not perform often:** by premise 2 she is inactive and disinterested. By premise 4 she then chaperones dances, so by premise 3 she is not a student. By premise 6 she is then also not engaged with school events. Again there is no contradiction.\n\nSince neither case is ruled out, the conclusion does not follow and is not refuted.\n\nUncertain"}
+{"set": "folio_original", "id": "o1", "text": "True"}
+{"set": "folio_original", "id": "o100", "text": "True"}
+{"set": "folio_original", "id": "o101", "text": "**False**\n\nHarry is a gentleman, so he is handsome. No ugly person is handsome, so Harry is not ugly. All evil people are ugly, so Harry is not evil either. That makes the condition true: Harry is neither evil nor ugly. Premise 1 says everyone is either kind or evil, so Harry must be kind. The conclusion claims Harry is neither kind nor a CEO, but he is kind, so it is false.\n\nThis assumes Harry, as a gentleman, counts as a man under premise 1.\n\nAnswer: False"}
+{"set": "folio_original", "id": "o102", "text": "Uncertain"}
+{"set": "folio_original", "id": "o103", "text": "False"}
+{"set": "folio_original", "id": "o104", "text": "**True**\n\nBeing a twin or triplet leads, through the chain of premises, to not developing strong family bonds. So Luke cannot be both a twin or triplet and have strong bonds. By premise 6 he therefore is neither a twin nor triplet nor develops strong bonds. Complaining often about siblings would make him a twin or triplet, so he does not complain often either.\n\n**True**"}
+{"set": "folio_original", "id": "o111", "text": "Uncertain"}
+{"set": "folio_original", "id": "o113", "text": "**False**\n\nThe Harding Pegmatite Mine is in the Picuris Mountains and was donated. Premise 4 says no Texas mountain range has a donated mine, so the Picuris Mountains are not in Texas. By premise 1 they must be in New Mexico. So the range Juan de Onate is known to have visited is not in Texas.\n\nStrictly, the premises don't rule out that he visited some other range in Texas, so this could be read as Uncertain. I've answered False because that is the conventional reading of this kind of item."}
+{"set": "folio_original", "id": "o115", "text": "**False**\n\nBy premises 2 and 4, Peter is taller than Michael, and Michael is taller than everyone else in his class. By transitivity (premise 3), Peter is taller than every man in Michael's class, including Michael. \"Taller\" is treated as asymmetric, though the premises do not state this. Under that reading, Peter cannot be shorter than any man in the class, so the conclusion is false."}
+{"set": "folio_original", "id": "o116", "text": "True"}
+{"set": "folio_original", "id": "o117", "text": "Uncertain"}
+{"set": "folio_original", "id": "o118", "text": "Uncertain"}
+{"set": "folio_original", "id": "o119", "text": "True"}
+{"set": "folio_original", "id": "o12", "text": "True"}
+{"set": "folio_original", "id": "o120", "text": "Uncertain"}
+{"set": "folio_original", "id": "o121", "text": "Uncertain"}
+{"set": "folio_original", "id": "o122", "text": "Uncertain"}
+{"set": "folio_original", "id": "o123", "text": "False"}
+{"set": "folio_original", "id": "o124", "text": "True"}
+{"set": "folio_original", "id": "o125", "text": "Uncertain"}
+{"set": "folio_original", "id": "o126", "text": "Uncertain"}
+{"set": "folio_original", "id": "o127", "text": "Uncertain"}
+{"set": "folio_original", "id": "o128", "text": "**False**\n\nSuppose John has a wedding. By premise 1, he has at least one child. By premise 5, he then does not have a wedding, which is a contradiction. So John has no wedding at all, and therefore cannot have a well-attended one."}
+{"set": "folio_original", "id": "o129", "text": "True"}
+{"set": "folio_original", "id": "o13", "text": "Uncertain"}
+{"set": "folio_original", "id": "o130", "text": "**Uncertain**\n\nPremises 1 and 5 together rule out John having a wedding. If he had one, he would have a child, which by premise 5 means he has no wedding, a contradiction. By premise 2, he also does not travel to Paris for his honeymoon. Premise 6 then applies to no case, since he has no wedding at all. Nothing in the premises settles whether John has a child, so the conclusion cannot be proven or disproven.\n\nUncertain"}
+{"set": "folio_original", "id": "o131", "text": "True"}
+{"set": "folio_original", "id": "o132", "text": "True"}
+{"set": "folio_original", "id": "o133", "text": "Uncertain"}
+{"set": "folio_original", "id": "o134", "text": "Uncertain"}
+{"set": "folio_original", "id": "o135", "text": "True"}
+{"set": "folio_original", "id": "o136", "text": "Uncertain"}
+{"set": "folio_original", "id": "o137", "text": "False"}
+{"set": "folio_original", "id": "o14", "text": "False"}
+{"set": "folio_original", "id": "o140", "text": "Uncertain"}
+{"set": "folio_original", "id": "o141", "text": "**Uncertain**\n\nBen is either from The Simpsons or funny. In both cases he ends up funny, since from The Simpsons leads to loved by children, which leads to funny. Funny means popular, and popular rules out ugly. So Ben is not ugly.\n\nThe premises only say that yellow characters are from The Simpsons, not the reverse. Nothing settles whether Ben is yellow. If he is, the conclusion holds; if he is not, it fails."}
+{"set": "folio_original", "id": "o142", "text": "**Uncertain**\n\nEither way, Ben is funny: if he is from The Simpsons, he is loved by children and so funny; otherwise premise 6 makes him funny directly. A funny character is popular, so Ben is not ugly. That rules out \"yellow and ugly\". The conclusion then holds only if Ben is not yellow, and the premises say nothing about whether he is."}
+{"set": "folio_original", "id": "o143", "text": "True"}
+{"set": "folio_original", "id": "o144", "text": "Uncertain"}
+{"set": "folio_original", "id": "o145", "text": "Uncertain"}
+{"set": "folio_original", "id": "o146", "text": "Uncertain"}
+{"set": "folio_original", "id": "o147", "text": "True"}
+{"set": "folio_original", "id": "o148", "text": "True"}
+{"set": "folio_original", "id": "o149", "text": "False"}
+{"set": "folio_original", "id": "o15", "text": "Since every square has four sides, and every four-sided thing is a shape, every square must be a shape.\n\n**True**"}
+{"set": "folio_original", "id": "o150", "text": "True"}
+{"set": "folio_original", "id": "o151", "text": "Uncertain"}
+{"set": "folio_original", "id": "o152", "text": "Uncertain"}
+{"set": "folio_original", "id": "o153", "text": "Uncertain"}
+{"set": "folio_original", "id": "o154", "text": "**False**"}
+{"set": "folio_original", "id": "o155", "text": "**True**\n\nFrom premises 5 and 6, Remy neither goes to bed late nor tidies, so he does not work often at home. By premises 1 and 2, he therefore has no large monitor and no impressive home office. The \"then\" part of the conclusion holds, so the whole conditional is true."}
+{"set": "folio_original", "id": "o156", "text": "**Uncertain**\n\nThe premises give \"All Greeks are mortal,\" but they never say any Greeks exist. \"Some Greeks are mortal\" requires at least one Greek, so it does not strictly follow. Under traditional Aristotelian logic, which assumes the category is non-empty, the answer would be True."}
+{"set": "folio_original", "id": "o157", "text": "False"}
+{"set": "folio_original", "id": "o158", "text": "True"}
+{"set": "folio_original", "id": "o159", "text": "True"}
+{"set": "folio_original", "id": "o16", "text": "Uncertain"}
+{"set": "folio_original", "id": "o160", "text": "Uncertain"}
+{"set": "folio_original", "id": "o161", "text": "True"}
+{"set": "folio_original", "id": "o162", "text": "**Uncertain**"}
+{"set": "folio_original", "id": "o163", "text": "False"}
+{"set": "folio_original", "id": "o164", "text": "**Uncertain**\n\nBreaking Bad is not a reality TV show. So it does not portray real lives, is not on the Bachelor, and does not give out roses on TV. Premise 1 only says roses are given out on *some* Mondays at 8 pm. Nothing says every Monday 8 pm show gives out roses. So the premises neither confirm nor rule out that Breaking Bad airs then."}
+{"set": "folio_original", "id": "o165", "text": "False"}
+{"set": "folio_original", "id": "o166", "text": "**True**\n\nIf roses were given out during Breaking Bad, then by premises 2–4 it would be on the Bachelor, portray real people, and so be a reality TV show. That contradicts premise 5, so the \"if\" part is false. A conditional with a false \"if\" part is vacuously true."}
+{"set": "folio_original", "id": "o167", "text": "True"}
+{"set": "folio_original", "id": "o168", "text": "True"}
+{"set": "folio_original", "id": "o169", "text": "False"}
+{"set": "folio_original", "id": "o17", "text": "Uncertain"}
+{"set": "folio_original", "id": "o170", "text": "Uncertain"}
+{"set": "folio_original", "id": "o171", "text": "**True**"}
+{"set": "folio_original", "id": "o172", "text": "**True**\n\nReading the antecedent as \"colorectal cancer is not a mild flu, and it is a Cholangiocarcinoma,\" the conclusion follows. If colorectal cancer is a Cholangiocarcinoma, then it satisfies \"bile duct cancer or Cholangiocarcinoma.\" So the implication holds no matter what else is true.\n\nSeparately, the premises show colorectal cancer is neither a bile duct cancer nor a Cholangiocarcinoma. Bile duct cancer is a severe cancer, so it is deadly and has a low survival rate. Premise 6 then rules out colorectal cancer being a bile duct cancer, and so it cannot be a Cholangiocarcinoma either. The antecedent is therefore false, which also makes the implication true.\n\nThe sentence is ambiguous, though. If it means \"not both a mild flu and a Cholangiocarcinoma,\" the antecedent is true and the consequent is false. Under that reading the answer would be False."}
+{"set": "folio_original", "id": "o176", "text": "Uncertain"}
+{"set": "folio_original", "id": "o177", "text": "False"}
+{"set": "folio_original", "id": "o178", "text": "True"}
+{"set": "folio_original", "id": "o179", "text": "False"}
+{"set": "folio_original", "id": "o18", "text": "**True**\n\nPremise 3 is read as applying to everything in the domain, Rock included: each is a rabbit or a squirrel. Rock is still, so by premise 4 Rock is not skittish. By premise 5, Rock is therefore not a squirrel. So Rock must be a rabbit, and by premise 1 Rock is cute. That makes \"Rock is a turtle or cute\" true.\n\nIf premise 3 covered only things already known to be animals, Rock's status would be uncertain."}
+{"set": "folio_original", "id": "o180", "text": "False"}
+{"set": "folio_original", "id": "o181", "text": "False"}
+{"set": "folio_original", "id": "o182", "text": "Uncertain"}
+{"set": "folio_original", "id": "o183", "text": "True"}
+{"set": "folio_original", "id": "o184", "text": "False"}
+{"set": "folio_original", "id": "o185", "text": "True"}
+{"set": "folio_original", "id": "o186", "text": "False"}
+{"set": "folio_original", "id": "o187", "text": "Uncertain"}
+{"set": "folio_original", "id": "o188", "text": "Uncertain"}
+{"set": "folio_original", "id": "o189", "text": "True"}
+{"set": "folio_original", "id": "o19", "text": "**True**\n\nRock is still, so it is not skittish (premise 4). Since all squirrels are skittish (premise 5), Rock is not a squirrel. Premise 3 says everything is a rabbit or a squirrel, so Rock is a rabbit. All rabbits are cute (premise 1), so Rock is cute. That makes the consequent \"cute or skittish\" true, so the conditional holds whatever the antecedent says."}
+{"set": "folio_original", "id": "o190", "text": "False"}
+{"set": "folio_original", "id": "o191", "text": "False"}
+{"set": "folio_original", "id": "o192", "text": "False"}
+{"set": "folio_original", "id": "o193", "text": "False"}
+{"set": "folio_original", "id": "o194", "text": "False"}
+{"set": "folio_original", "id": "o195", "text": "Uncertain"}
+{"set": "folio_original", "id": "o196", "text": "Uncertain"}
+{"set": "folio_original", "id": "o197", "text": "False"}
+{"set": "folio_original", "id": "o198", "text": "**True**\n\nPremise 6 forces KiKi to jump. If KiKi neither jumped nor had legs, it would have to be terricolous or have legs. Being terricolous means having legs (premise 5), which contradicts the assumption. So KiKi either jumps or has legs, and having legs means it jumps (premise 4).\n\nBecause KiKi jumps, Jane likes it (premise 3). If KiKi barked, Jane would not like it (premise 1), so KiKi does not bark. All dogs bark (premise 2), so KiKi is not a dog.\n\nThis assumes KiKi is an animal, which the premises imply but never state outright.\n\nTrue"}
+{"set": "folio_original", "id": "o199", "text": "False"}
+{"set": "folio_original", "id": "o20", "text": "**False**\n\nRock is still, and anything skittish is not still, so Rock is not skittish. That makes the consequent \"Rock is a turtle and skittish\" false. Premise 3 is read here as saying everything is a rabbit or a squirrel. Squirrels are skittish, so Rock is not a squirrel and must be a rabbit, which makes Rock cute. The antecedent \"cute and still\" is therefore true while the consequent is false, so the conditional is false. If premise 3 applied only to things known to be animals, Rock's cuteness would not follow and the answer would be Uncertain.\n\nFalse"}
+{"set": "folio_original", "id": "o200", "text": "False"}
+{"set": "folio_original", "id": "o201", "text": "False"}
+{"set": "folio_original", "id": "o202", "text": "Uncertain"}
+{"set": "folio_original", "id": "o203", "text": "True"}
+{"set": "folio_original", "id": "o21", "text": "True"}
+{"set": "folio_original", "id": "o22", "text": "False"}
+{"set": "folio_original", "id": "o23", "text": "Uncertain"}
+{"set": "folio_original", "id": "o24", "text": "True"}
+{"set": "folio_original", "id": "o25", "text": "False"}
+{"set": "folio_original", "id": "o26", "text": "Uncertain"}
+{"set": "folio_original", "id": "o28", "text": "**Uncertain**\n\nThe premises allow different situations for Marvin.\n\n- **Marvin is from Earth.** Then he is human (premise 4), so he is not extraterrestrial (premise 3). He cannot be from Mars, because that would make him an alien and so extraterrestrial (premises 1–2). Here he is human, so the conclusion is false.\n- **Marvin is not from Earth.** Then he is extraterrestrial (premise 6), so he is not human (premise 3). Nothing settles whether he is from Mars.\n  - If he is from Mars, the conclusion is false.\n  - If he is not from Mars, the conclusion is true.\n\nSince the premises fit cases where the conclusion is true and cases where it is false, it does not follow.\n\nAnswer: Uncertain"}
+{"set": "folio_original", "id": "o3", "text": "**Uncertain**"}
+{"set": "folio_original", "id": "o30", "text": "Uncertain"}
+{"set": "folio_original", "id": "o31", "text": "True"}
+{"set": "folio_original", "id": "o32", "text": "**False**\n\nPremise 1 says Djokovic is either a Grand Slam champion or an Oscar-nominated actor, so check both cases.\n\n- **Grand Slam champion:** Premises 2 and 4 make him an athlete, and premise 6 makes him famous. Premise 8 then makes him well paid, though its wording \"lives in well paid\" is garbled; I read it as \"is well paid\". Premise 7 then places him in a tax haven.\n- **Oscar-nominated actor:** Premises 3 and 5 make him well paid, and premise 7 places him in a tax haven.\n\nEither way he lives in a tax haven, so the premises contradict the conclusion."}
+{"set": "folio_original", "id": "o33", "text": "True"}
+{"set": "folio_original", "id": "o34", "text": "Uncertain"}
+{"set": "folio_original", "id": "o35", "text": "False"}
+{"set": "folio_original", "id": "o36", "text": "**True**\n\nPremise 2, \"Composers write music pieces,\" is read here as \"whoever writes a music piece is a composer.\" Beethoven wrote Symphony No. 9 (premise 3), which is a music piece (premise 1), so he is a composer.\n\nUnder a strict reading, premise 2 only says composers write music pieces, not that anyone who writes one is a composer. That converse is not stated, which would make the answer Uncertain. I chose the rule-like reading because this example appears to come from a benchmark that treats such generic statements that way."}
+{"set": "folio_original", "id": "o37", "text": "True"}
+{"set": "folio_original", "id": "o38", "text": "False"}
+{"set": "folio_original", "id": "o39", "text": "**Uncertain**\n\nPremise 3 says Max's design is in Zaha Hadid's style or Kelly Wearstler's style.\n\n- **Zaha Hadid's style is ruled out.** Such a design would be timeless (premise 1). Premise 6 would then make it a mass product design. But no mass product design is timeless (premise 2), which is a contradiction.\n- **So it is Kelly Wearstler's style.** It is therefore evocative and dreamy (premises 4–5). It also cannot be timeless, since that would trigger the same contradiction.\n\nNothing in the premises says whether a non-timeless Kelly Wearstler design is or is not a mass product design.\n\n**Uncertain**"}
+{"set": "folio_original", "id": "o4", "text": "Uncertain"}
+{"set": "folio_original", "id": "o40", "text": "**True**\n\nThe conclusion follows from the premises:\n\n- Suppose Max's design were timeless. By premise 6, it would then be a mass product design. But premise 2 says no mass product design is timeless, which contradicts this. So Max's design is not timeless.\n- Since all Zaha Hadid styles are timeless (premise 1), Max's design is not a Zaha Hadid style.\n- By premise 3, Max's design must therefore be a Kelly Wearstler style.\n- By premises 4 and 5, it is then both evocative and dreamy.\n\nTrue"}
+{"set": "folio_original", "id": "o41", "text": "**True**"}
+{"set": "folio_original", "id": "o42", "text": "**Uncertain**\n\nThe premises never state that Coco Gauff played at Roland Garros 2022. Premise 4 is garbled and has no subject.\n\n- **If she did play there:** Suppose she were a male player at Roland Garros 2022. By premise 5 she lost to Nadal, so premise 6 says she is not a male player. That is a contradiction, so she would have to be a female player. Then she lost to Świątek (premise 3), so she is ranked highly (premise 2), so she is among the most active players (premise 1).\n- **If she did not play there:** Nothing in the premises links her to the conclusion.\n\nSince her participation is not given, the conclusion is neither implied nor contradicted."}
+{"set": "folio_original", "id": "o43", "text": "**Uncertain**\n\nReading premise 4 as saying everyone at Roland Garros 2022 is either a female or a male player there, Coco Gauff cannot be a male player. If she were, premise 5 would mean she lost to Nadal, and premise 6 would then say she is not a male player, a contradiction. So she is a female player. That makes her a player who lost to Świątek and is ranked highly, but no premise says whether a female player lost to Nadal.\n\nUncertain"}
+{"set": "folio_original", "id": "o44", "text": "**False**\n\nThis assumes premise 4 means every player (Coco Gauff included) is either a female or a male tennis player at Roland Garros 2022. Premise 4 is worded vaguely, and if it does not cover Coco Gauff, the answer would be Uncertain.\n\n1. Suppose Coco Gauff is a male player at Roland Garros 2022. Then by premise 5 she lost to Rafael Nadal.\n2. Premise 6 then says she is not a male player there. That contradicts step 1, so she is not male.\n3. By premise 4, she is a female player at Roland Garros 2022.\n4. By premise 3, she lost to Iga Świątek.\n5. By premise 2, she is ranked highly by the WTA. By premise 1, she is among the most active players in major tennis.\n\nSo the premises show she lost to Iga Świątek and is among the most active players. The conclusion says she is neither, so it is false.\n\n**False**"}
+{"set": "folio_original", "id": "o45", "text": "Uncertain"}
+{"set": "folio_original", "id": "o46", "text": "**True**\n\nPremise 2 says students who want a long vacation love summer most, and premise 5 says James wants a long vacation. That gives summer as his favourite season. This assumes James is a student, which the premises never state, so read strictly the answer would be Uncertain."}
+{"set": "folio_original", "id": "o48", "text": "Uncertain"}
+{"set": "folio_original", "id": "o49", "text": "Uncertain"}
+{"set": "folio_original", "id": "o50", "text": "False"}
+{"set": "folio_original", "id": "o51", "text": "True"}
+{"set": "folio_original", "id": "o52", "text": "False"}
+{"set": "folio_original", "id": "o53", "text": "Uncertain"}
+{"set": "folio_original", "id": "o54", "text": "True"}
+{"set": "folio_original", "id": "o55", "text": "True"}
+{"set": "folio_original", "id": "o56", "text": "He left Bayern Munchen, and anyone who leaves a team no longer plays for it, so the premises contradict the conclusion.\n\n**False**"}
+{"set": "folio_original", "id": "o57", "text": "Uncertain"}
+{"set": "folio_original", "id": "o58", "text": "**Uncertain**\n\nThe premises place Butte in Montana and Pierre outside Montana. However, nothing says a city can belong to only one state. So Butte could also be in Pierre's state, and the premises neither confirm nor rule out the conclusion."}
+{"set": "folio_original", "id": "o59", "text": "Uncertain"}
+{"set": "folio_original", "id": "o6", "text": "True"}
+{"set": "folio_original", "id": "o60", "text": "True"}
+{"set": "folio_original", "id": "o61", "text": "Uncertain"}
+{"set": "folio_original", "id": "o62", "text": "Uncertain"}
+{"set": "folio_original", "id": "o63", "text": "Uncertain"}
+{"set": "folio_original", "id": "o64", "text": "False"}
+{"set": "folio_original", "id": "o65", "text": "True"}
+{"set": "folio_original", "id": "o66", "text": "True"}
+{"set": "folio_original", "id": "o67", "text": "Uncertain"}
+{"set": "folio_original", "id": "o68", "text": "True"}
+{"set": "folio_original", "id": "o69", "text": "True"}
+{"set": "folio_original", "id": "o7", "text": "Uncertain"}
+{"set": "folio_original", "id": "o70", "text": "False"}
+{"set": "folio_original", "id": "o74", "text": "True"}
+{"set": "folio_original", "id": "o75", "text": "False"}
+{"set": "folio_original", "id": "o76", "text": "Uncertain"}
+{"set": "folio_original", "id": "o77", "text": "True"}
+{"set": "folio_original", "id": "o78", "text": "True"}
+{"set": "folio_original", "id": "o79", "text": "False"}
+{"set": "folio_original", "id": "o8", "text": "Uncertain"}
+{"set": "folio_original", "id": "o80", "text": "**True**\n\nAssume dried Thai chilies were a Baked by Melissa product. Then they would be cupcakes, so bakeries, so not spicy.\n\nSince they would be a bakery, premise 5 applies: they would be a hotpot or spicy. Hotpots are spicy, so either way they would be spicy.\n\nThat contradicts \"not spicy,\" so the assumption fails.\n\nTrue"}
+{"set": "folio_original", "id": "o81", "text": "Uncertain"}
+{"set": "folio_original", "id": "o82", "text": "**True**"}
+{"set": "folio_original", "id": "o83", "text": "**False**\n\nSuppose dried Thai chilies were cupcakes. Then they would be a bakery (premise 2), so not spicy (premise 1). Being a bakery triggers premise 5, so they would be a hotpot or spicy. A hotpot is spicy (premise 3), so either way they would be spicy, which is a contradiction. So they are not cupcakes, and the conclusion is false."}
+{"set": "folio_original", "id": "o84", "text": "True"}
+{"set": "folio_original", "id": "o85", "text": "Uncertain"}
+{"set": "folio_original", "id": "o86", "text": "Uncertain"}
+{"set": "folio_original", "id": "o88", "text": "True"}
+{"set": "folio_original", "id": "o89", "text": "True"}
+{"set": "folio_original", "id": "o90", "text": "Uncertain"}
+{"set": "folio_original", "id": "o91", "text": "True"}
+{"set": "folio_original", "id": "o92", "text": "False"}
+{"set": "folio_original", "id": "o93", "text": "False"}
+{"set": "folio_original", "id": "o94", "text": "Uncertain"}
+{"set": "folio_original", "id": "o95", "text": "True"}
+{"set": "folio_original", "id": "o96", "text": "Uncertain"}
+{"set": "folio_original", "id": "o97", "text": "**False**\n\nSuppose a koala were a quokka. Then it is from Australia, so tourists love it, so it is one of Max's favorite animals, so it is very fluffy. By premise 6, a very fluffy koala is not a quokka, which is a contradiction. So the koala is not a quokka, and the conclusion fails.\n\nFalse"}
+{"set": "folio_original", "id": "o98", "text": "True"}
+{"set": "folio_original", "id": "o99", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s0", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s1", "text": "**True**\n\nThe conclusion follows: Oakley always either performs in talent shows often or is inactive and disinterested (premise 5), and either case makes \"student or inactive\" true. The if-condition is not needed.\n\n- **Case 1: Oakley performs in talent shows often.** Premise 3 says she then attends and is very engaged with school events. Premise 6 ties that to being a student, so she is a student who attends the school.\n- **Case 2: Oakley is an inactive and disinterested member of her community.** The conclusion's second option is then directly satisfied.\n\nTrue"}
+{"set": "folio_new_names", "id": "s100", "text": "True"}
+{"set": "folio_new_names", "id": "s101", "text": "False"}
+{"set": "folio_new_names", "id": "s102", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s103", "text": "**False**"}
+{"set": "folio_new_names", "id": "s104", "text": "True"}
+{"set": "folio_new_names", "id": "s111", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s113", "text": "**Uncertain**\n\nPremise 4 places the Picuris Mountains in New Mexico or Wren. Premise 2 only rules out Texas, which says nothing about Wren. So the premises do not settle whether the Picuris Mountains, which Juan de Onate visited, are in Wren."}
+{"set": "folio_new_names", "id": "s115", "text": "**False**\n\nDarcy is taller than Tenzin (premise 7). Tenzin is taller than everyone else in his class (premise 6). So by transitivity (premise 2), Darcy is taller than every member of Tenzin's class, including Tenzin himself. This assumes \"taller than\" cannot run both ways, which is commonly taken for granted though the premises don't state it. On that basis, Darcy cannot be shorter than any man in the class."}
+{"set": "folio_new_names", "id": "s116", "text": "True"}
+{"set": "folio_new_names", "id": "s117", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s118", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s119", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s12", "text": "True"}
+{"set": "folio_new_names", "id": "s13", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s14", "text": "False"}
+{"set": "folio_new_names", "id": "s15", "text": "True"}
+{"set": "folio_new_names", "id": "s16", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s17", "text": "**Uncertain**\n\nRemy is still, so by premise 4 Remy is not skittish, and by premise 5 Remy is not a squirrel. If Remy is an animal (which is never stated), premise 6 makes Remy a rabbit. But no premise says rabbits cannot be turtles, so the premises neither establish nor rule out that Remy is a turtle."}
+{"set": "folio_new_names", "id": "s18", "text": "**True**\n\nRemy is still. Skittish things are not still, so Remy is not skittish. All squirrels are skittish, so Remy is not a squirrel. Premise 5 is read as applying to everything in the domain: each thing is a rabbit or a squirrel. On that reading, Remy is a rabbit. All rabbits are cute, so Remy is cute, and therefore \"a turtle or cute\" holds.\n\nIf premise 5 were read as covering only things known to be animals, the conclusion would not follow, since nothing says Remy is an animal. The standard reading for this kind of problem is the universal one.\n\nTrue"}
+{"set": "folio_new_names", "id": "s19", "text": "**True**\n\nReading premise 1 as applying to everything in the domain, every individual, Sage included, is either a rabbit or a squirrel.\n\n1. Sage is still (premise 6). Anything skittish is not still (premise 4), so Sage is not skittish.\n2. All squirrels are skittish (premise 3), so Sage is not a squirrel.\n3. By premise 1, Sage must then be a rabbit.\n4. All rabbits are cute (premise 5), so Sage is cute.\n\nSince Sage is cute, \"Sage is either cute or skittish\" holds whatever the condition says, so the conclusion follows.\n\nOne caveat: the premises never state that Sage is an animal. If premise 1 applied only to animals, the answer would be Uncertain. I've taken the usual reading that it covers every individual."}
+{"set": "folio_new_names", "id": "s20", "text": "**Uncertain**\n\nBecause Lumi is still, premise 1 means Lumi is not skittish. So the \"then\" part (\"a turtle and skittish\") is false, and the whole conditional is false exactly when Lumi is cute.\n\nNothing establishes that Lumi is cute. If Lumi were an animal, premise 4 would make Lumi a rabbit, since a still thing cannot be a squirrel. Premise 3 would then make Lumi cute and the conclusion false. But the premises never say Lumi is an animal, so whether Lumi is cute, and so whether the conclusion holds, is left open."}
+{"set": "folio_new_names", "id": "s21", "text": "True"}
+{"set": "folio_new_names", "id": "s22", "text": "False"}
+{"set": "folio_new_names", "id": "s23", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s24", "text": "True"}
+{"set": "folio_new_names", "id": "s25", "text": "False"}
+{"set": "folio_new_names", "id": "s26", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s28", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s3", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s30", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s31", "text": "True"}
+{"set": "folio_new_names", "id": "s32", "text": "**False**\n\nRowan must be either a Grand Slam champion or an Oscar-nominated actor (premise 1).\n\n- **If Rowan is an Oscar-nominated actor:** he is a celebrity (2), so he is well paid (7), so he lives in a tax haven (6).\n- **If Rowan is a Grand Slam champion:** he is a professional tennis player (5), so an athlete (4), so famous (3). Premise 8 is garbled (\"lives in well paid\"). Read as \"Rowan is well paid,\" it makes him well paid, so he lives in a tax haven (6).\n\nOn that reading, Rowan lives in a tax haven in both cases, which contradicts the conclusion.\n\nFalse"}
+{"set": "folio_new_names", "id": "s33", "text": "True"}
+{"set": "folio_new_names", "id": "s34", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s35", "text": "False"}
+{"set": "folio_new_names", "id": "s36", "text": "True"}
+{"set": "folio_new_names", "id": "s37", "text": "True"}
+{"set": "folio_new_names", "id": "s38", "text": "False"}
+{"set": "folio_new_names", "id": "s39", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s4", "text": "**Uncertain**"}
+{"set": "folio_new_names", "id": "s40", "text": "True"}
+{"set": "folio_new_names", "id": "s41", "text": "True"}
+{"set": "folio_new_names", "id": "s42", "text": "True"}
+{"set": "folio_new_names", "id": "s43", "text": "Uncertain\n\nPremise 3 combined with premise 2 shows Ellis cannot be a male player at Roland Garros 2022. If Ellis were, Ellis would have lost to Nadal, and premise 2 would then say Ellis is not such a player. That rules out the only route in the premises that would establish a loss to Nadal.\n\nIf Ellis is a female player there, Ellis lost to Świątek and is ranked highly. Nothing says whether Ellis also lost to Nadal. The premises also never say Ellis played at Roland Garros 2022. So the loss to Nadal is neither established nor ruled out."}
+{"set": "folio_new_names", "id": "s44", "text": "False"}
+{"set": "folio_new_names", "id": "s45", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s46", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s48", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s49", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s50", "text": "False"}
+{"set": "folio_new_names", "id": "s51", "text": "True"}
+{"set": "folio_new_names", "id": "s52", "text": "False"}
+{"set": "folio_new_names", "id": "s53", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s54", "text": "True"}
+{"set": "folio_new_names", "id": "s55", "text": "True"}
+{"set": "folio_new_names", "id": "s56", "text": "False"}
+{"set": "folio_new_names", "id": "s57", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s58", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s59", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s6", "text": "True"}
+{"set": "folio_new_names", "id": "s60", "text": "True"}
+{"set": "folio_new_names", "id": "s61", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s62", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s63", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s64", "text": "False"}
+{"set": "folio_new_names", "id": "s65", "text": "True"}
+{"set": "folio_new_names", "id": "s66", "text": "True"}
+{"set": "folio_new_names", "id": "s67", "text": "Uncertain. The premises give Emery's endowment as $42.3 billion, but they say nothing about other institutions' endowments, so the comparison can't be made.\n\n**Uncertain**"}
+{"set": "folio_new_names", "id": "s68", "text": "True"}
+{"set": "folio_new_names", "id": "s69", "text": "True"}
+{"set": "folio_new_names", "id": "s7", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s70", "text": "False"}
+{"set": "folio_new_names", "id": "s74", "text": "True"}
+{"set": "folio_new_names", "id": "s75", "text": "**False**"}
+{"set": "folio_new_names", "id": "s76", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s77", "text": "**True**\n\nPremise 3 cannot hold if Hollis both works on campus and needs money, since it would give \"needs money\" and \"does not need money\" at once. So she cannot do both. Premise 5 says working on campus implies needing money, so Hollis does not work on campus. By premise 4, she therefore does not order takeout frequently. By premise 6, she must enjoy the dining hall meals. Premises 1 and 2 then give that she is not a picky eater and spends a lot of time in the dining halls."}
+{"set": "folio_new_names", "id": "s78", "text": "**True**\n\nFrom premises 1 and 3, Toby cannot work in a student job on campus. So by premise 4 she does not order takeout often, and by premise 5 she enjoys the dining hall meals. Premise 2 then makes her not a picky eater, which satisfies the conclusion.\n\nTrue"}
+{"set": "folio_new_names", "id": "s79", "text": "**False**\n\nThe first premise reduces to \"if the chilies are a bakery, they are spicy,\" because every hotpot is spicy. Premise 5 says no bakery is spicy, so the chilies cannot be a bakery. Every Baked by Melissa product is a cupcake, and every cupcake is a bakery. So the chilies are not a Baked by Melissa product."}
+{"set": "folio_new_names", "id": "s8", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s80", "text": "**True**\n\nSuppose dried Thai chilies were a product of Baked by Melissa. Then they would be cupcakes, and so bakeries. By premise 3, they would not be spicy. Being a bakery makes the condition in premise 4 true, so they would be a hotpot or spicy. Since all hotpots are spicy, they would be spicy either way. That contradicts their not being spicy. So they are not a product of Baked by Melissa."}
+{"set": "folio_new_names", "id": "s81", "text": "**Uncertain**\n\nThe premises are consistent both with the chilies being a hotpot and with them not being one.\n\n- If the chilies were a bakery, premise 3 would make them a hotpot or spicy. Either way they would be spicy, since all hotpots are spicy. But no bakery is spicy, so the chilies are not a bakery.\n- If the chilies are spicy and not a bakery, every premise holds whether or not they are a hotpot.\n- If the chilies are neither spicy nor a bakery, premise 3 does not apply. They then cannot be a hotpot, because all hotpots are spicy.\n\n**Answer: Uncertain**"}
+{"set": "folio_new_names", "id": "s82", "text": "True"}
+{"set": "folio_new_names", "id": "s83", "text": "**False**\n\nDried Thai chilies cannot be a bakery. If they were, premise 1 would make them a hotpot or spicy. Premise 3 says hotpots are spicy, so either way they would be spicy. Premise 5 says no bakery is spicy, which is a contradiction. Since all cupcakes are bakeries, dried Thai chilies are not cupcakes, so the conclusion is false."}
+{"set": "folio_new_names", "id": "s84", "text": "True"}
+{"set": "folio_new_names", "id": "s85", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s86", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s88", "text": "True"}
+{"set": "folio_new_names", "id": "s89", "text": "True"}
+{"set": "folio_new_names", "id": "s90", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s91", "text": "True"}
+{"set": "folio_new_names", "id": "s92", "text": "False"}
+{"set": "folio_new_names", "id": "s93", "text": "False"}
+{"set": "folio_new_names", "id": "s94", "text": "Uncertain"}
+{"set": "folio_new_names", "id": "s95", "text": "True"}
+{"set": "folio_new_names", "id": "s96", "text": "**Uncertain**\n\nThe premises never say that a koala is from Australia, is loved by tourists, or is one of Max's favorite animals. So there is no chain linking koalas to \"love to sleep.\" Premise 2 only applies if a koala is already very fluffy, and nothing establishes that it is."}
+{"set": "folio_new_names", "id": "s97", "text": "False"}
+{"set": "folio_new_names", "id": "s98", "text": "**True**\n\nIf the koala were a quokka, it would be an animal from Australia. It would then be loved by tourists and be one of Max's favorite animals. So it would be very fluffy and love to sleep. By premise 6, a very fluffy koala is not a quokka, which is a contradiction. So the koala cannot be a quokka. The conditional's \"if\" part is therefore false, which makes the whole conditional true. This holds whether \"either…or\" is read as inclusive or exclusive."}
+{"set": "folio_new_names", "id": "s99", "text": "Uncertain"}
