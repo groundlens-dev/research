@@ -45,6 +45,7 @@ __all__ = [
     "labels_of",
     "pooled",
     "plot_main_figure",
+    "plot_summary_figure",
 ]
 
 PASS, FAIL, REVIEW = "True", "False", "Uncertain"
@@ -349,4 +350,46 @@ def plot_main_figure(curves: dict[str, list[Summary]], judges_all: dict[str, Sum
         axis.legend(frameon=False, loc="best")
     if path is not None:
         fig.savefig(path, bbox_inches="tight")
+    return fig
+
+
+def plot_summary_figure(rows: list[tuple[str, str, Summary]], path: str | Path | None = None):
+    """The figure at the top of the README: wrong and correct approvals of each system.
+
+    ``rows`` are ``(label, kind, summary)`` from top to bottom, ``kind`` being ``"judge"``,
+    ``"majority"`` or ``"every"``.
+    """
+    import matplotlib.pyplot as plt
+
+    colours = {"judge": "#8a8986", "majority": "#eb6834", "every": "#2a78d6"}
+    ink, muted = "#1f1f1e", "#6b6a67"
+    plt.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
+                         "font.size": 10})
+    fig, axes = plt.subplots(1, 2, figsize=(10, 0.55 * len(rows) + 1.4), sharey=True,
+                             gridspec_kw={"wspace": 0.08})
+    y = list(range(len(rows)))[::-1]
+    panels = (
+        ("Wrong approvals", "of the claims the document does not support", lambda s: s.false_approvals,
+         lambda s: s.not_follow, "fewer is better"),
+        ("Correct approvals", "of the claims the document supports", lambda s: s.approved_follow,
+         lambda s: s.follow, "the rest go to a person"),
+    )
+    for axis, (title, subtitle, count, total, note) in zip(axes, panels):
+        values = [100 * count(s) / total(s) for _, _, s in rows]
+        axis.barh(y, values, height=0.62, color=[colours[k] for _, k, _ in rows], edgecolor="white", linewidth=2)
+        top = max(values)
+        for yi, value, (_, _, s) in zip(y, values, rows):
+            axis.text(value + top * 0.02, yi, f"{value:.1f}%  ({count(s)} of {total(s)})", va="center",
+                      color=ink, fontsize=9)
+        axis.set_xlim(0, top * 1.55)
+        axis.set_title(f"{title}\n", loc="left", fontsize=11, fontweight="bold", color=ink)
+        axis.text(0, 1.02, f"{subtitle}, {note}", transform=axis.transAxes, color=muted, fontsize=9)
+        axis.set_xticks([])
+        for side in ("top", "right", "bottom"):
+            axis.spines[side].set_visible(False)
+        axis.spines["left"].set_color("#d9d8d5")
+        axis.tick_params(left=False)
+    axes[0].set_yticks(y, [label for label, _, _ in rows], color=ink)
+    if path is not None:
+        fig.savefig(path, dpi=200, bbox_inches="tight", facecolor="white")
     return fig
